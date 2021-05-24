@@ -19,16 +19,29 @@ public class Application {
     }
 
     public void start() throws IOException {
-        this.salesmen = this.fileInput.getSalesmanListFromFile();
-        this.reportDefinition = this.fileInput.getReportDefinitionFromFile();
+        getInputData();
+        calculateScore();
+        List<Salesman> sortedSalesmen = sortSalesmenList(salesmen);
+        removeBadEntries(sortedSalesmen);
+        createFileAndAddInfo(sortedSalesmen);
+    }
 
-        for (Salesman salesman : salesmen) {
-            salesman.calculateScore(this.reportDefinition.isUseExperienceMultiplier());
-        }
-
+    private List<Salesman> sortSalesmenList(List<Salesman> salesmen) {
         List<Salesman> sortedSalesmen = new ArrayList<>(salesmen);
         sortedSalesmen.sort(Collections.reverseOrder());
+        return sortedSalesmen;
+    }
 
+    private void createFileAndAddInfo(List<Salesman> sortedSalesmen) throws IOException {
+        this.fileOutput.appendSalesmen(sortedSalesmen, this.reportDefinition.getTopPerformersThreshold());
+    }
+
+    private void getInputData() throws IOException {
+        this.salesmen = this.fileInput.getSalesmanListFromFile();
+        this.reportDefinition = this.fileInput.getReportDefinitionFromFile();
+    }
+
+    private void removeBadEntries(List<Salesman> sortedSalesmen) {
         for (int i = 0; i < sortedSalesmen.size(); i++) {
             Salesman salesman = sortedSalesmen.get(i);
             if (salesman.getSalesPeriod() > this.reportDefinition.getPeriodLimit()) {
@@ -36,8 +49,11 @@ public class Application {
                 i -= 1;
             }
         }
+    }
 
-        this.fileOutput.appendSalesmen(sortedSalesmen, this.reportDefinition.getTopPerformersThreshold());
-        System.out.println();
+    private void calculateScore() {
+        for (Salesman salesman : salesmen) {
+            salesman.calculateScore(this.reportDefinition.isUseExperienceMultiplier());
+        }
     }
 }

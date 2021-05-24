@@ -1,12 +1,19 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 public class FileOutput {
     private FileWriter writer;
 
     public FileOutput() throws IOException {
-        this.writer = new FileWriter("src/main/resources/Report.csv");
+        Date date = new Date();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int month = localDate.getMonthValue();
+        int year = localDate.getYear();
+        this.writer = new FileWriter(String.format("src/main/resources/Report %s-%s.csv", year, month));
         writer.append("Name, Score" + "\n");
     }
 

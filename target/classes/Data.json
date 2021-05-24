@@ -28,5 +28,11 @@
     "totalSales": 320,
     "salesPeriod": 11,
     "experienceMultiplier": 0.5
-  }
+  },
+  {
+  "name": "Georgi Georgiev",
+  "totalSales": 111,
+  "salesPeriod": 8,
+  "experienceMultiplier": 0.6
+}
 ]
