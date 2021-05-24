@@ -1,0 +1,32 @@
+[
+  {
+    "name": "John Smith",
+    "totalSales": 250,
+    "salesPeriod": 10,
+    "experienceMultiplier": 0.5
+  },
+  {
+    "name": "David Prowless",
+    "totalSales": 250,
+    "salesPeriod": 10,
+    "experienceMultiplier": 0.5
+  },
+  {
+    "name": "Ivo Kirilov",
+    "totalSales": 340,
+    "salesPeriod": 10,
+    "experienceMultiplier": 0.5
+  },
+  {
+    "name": "Draga Georgieva",
+    "totalSales": 320,
+    "salesPeriod": 10,
+    "experienceMultiplier": 0.5
+  },
+  {
+    "name": "Balin Balinov",
+    "totalSales": 320,
+    "salesPeriod": 11,
+    "experienceMultiplier": 0.5
+  }
+]
