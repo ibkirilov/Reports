@@ -14,7 +14,7 @@ public class FileOutput {
         int month = localDate.getMonthValue();
         int year = localDate.getYear();
         this.writer = new FileWriter(String.format("src/main/resources/Report %s-%s.csv", year, month));
-        writer.append("Name, Score" + "\n");
+        this.writer.append("Name, Score" + "\n");
     }
 
     public void appendSalesmen(List<Salesman> sortedSalesmen, Integer topPerformersThreshold) throws IOException {
@@ -25,7 +25,7 @@ public class FileOutput {
                 if (sortedSalesmen.size() == i + 1) break;
             }
         }
-        writer.flush();
-        writer.close();
+        this.writer.flush();
+        this.writer.close();
     }
 }
