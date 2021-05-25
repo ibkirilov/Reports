@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class FileOutput {
-    private FileWriter writer;
+    private final FileWriter writer;
 
     public FileOutput() throws IOException {
         Date date = new Date();

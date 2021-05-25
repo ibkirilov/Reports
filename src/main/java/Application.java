@@ -1,17 +1,15 @@
-import org.json.simple.parser.ParseException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Application {
-    private FileInput fileInput;
-    private FileOutput fileOutput;
+    private final FileInput fileInput;
+    private final FileOutput fileOutput;
     private List<Salesman> salesmen;
     private ReportDefinition reportDefinition;
 
-    public Application() throws IOException, ParseException {
+    public Application() throws IOException {
         this.fileInput = new FileInput();
         this.fileOutput = new FileOutput();
         this.salesmen = new ArrayList<>();
@@ -23,7 +21,7 @@ public class Application {
         calculateScore();
         List<Salesman> sortedSalesmen = sortSalesmenList(salesmen);
         removeBadEntries(sortedSalesmen);
-        createFileAndAddInfo(sortedSalesmen);
+        createFileAndAddReport(sortedSalesmen);
     }
 
     private List<Salesman> sortSalesmenList(List<Salesman> salesmen) {
@@ -32,7 +30,7 @@ public class Application {
         return sortedSalesmen;
     }
 
-    private void createFileAndAddInfo(List<Salesman> sortedSalesmen) throws IOException {
+    private void createFileAndAddReport(List<Salesman> sortedSalesmen) throws IOException {
         this.fileOutput.appendSalesmen(sortedSalesmen, this.reportDefinition.getTopPerformersThreshold());
     }
 

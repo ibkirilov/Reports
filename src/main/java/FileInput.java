@@ -5,8 +5,8 @@ import java.io.*;
 import java.util.List;
 
 public class FileInput {
-    private ObjectMapper objectMapper;
-    private ConsoleInput consoleInput;
+    private final ObjectMapper objectMapper;
+    private final ConsoleInput consoleInput;
 
     public FileInput() {
         this.objectMapper = new ObjectMapper();
