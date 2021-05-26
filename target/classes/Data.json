@@ -18,7 +18,7 @@
     "experienceMultiplier": 0.5
   },
   {
-    "name": "Draga Georgieva",
+    "name": "Mihael Mihaelov",
     "totalSales": 320,
     "salesPeriod": 10,
     "experienceMultiplier": 0.5
@@ -34,5 +34,5 @@
   "totalSales": 111,
   "salesPeriod": 8,
   "experienceMultiplier": 0.6
-}
+  }
 ]

@@ -24,19 +24,21 @@ public class Application {
         createFileAndAddReport(sortedSalesmen);
     }
 
+    private void getInputData() throws IOException {
+        this.salesmen = this.fileInput.getSalesmanListFromFile();
+        this.reportDefinition = this.fileInput.getReportDefinitionFromFile();
+    }
+
+    private void calculateScore() {
+        for (Salesman salesman : salesmen) {
+            salesman.calculateScore(this.reportDefinition.isUseExperienceMultiplier());
+        }
+    }
+
     private List<Salesman> sortSalesmenList(List<Salesman> salesmen) {
         List<Salesman> sortedSalesmen = new ArrayList<>(salesmen);
         sortedSalesmen.sort(Collections.reverseOrder());
         return sortedSalesmen;
-    }
-
-    private void createFileAndAddReport(List<Salesman> sortedSalesmen) throws IOException {
-        this.fileOutput.appendSalesmen(sortedSalesmen, this.reportDefinition.getTopPerformersThreshold());
-    }
-
-    private void getInputData() throws IOException {
-        this.salesmen = this.fileInput.getSalesmanListFromFile();
-        this.reportDefinition = this.fileInput.getReportDefinitionFromFile();
     }
 
     private void removeBadEntries(List<Salesman> sortedSalesmen) {
@@ -49,9 +51,7 @@ public class Application {
         }
     }
 
-    private void calculateScore() {
-        for (Salesman salesman : salesmen) {
-            salesman.calculateScore(this.reportDefinition.isUseExperienceMultiplier());
-        }
+    private void createFileAndAddReport(List<Salesman> sortedSalesmen) throws IOException {
+        this.fileOutput.appendSalesmen(sortedSalesmen, this.reportDefinition.getTopPerformersThreshold());
     }
 }
